@@ -257,7 +257,7 @@ See the LICENSE file (GPLv3) for details.
     <p class="subtitle">An Electrostatics Game</p>
     
     <button id="btnInfo" class="btn-info-corner">ABOUT</button>
-    <input type="text" id="pName" class="name-input" placeholder="INSERT NAME" maxlength="12">
+    <input type="text" id="pName" class="name-input" placeholder="INSERT NAME" maxlength="8">
     
     <div class="audio-select-label">SOUND SYSTEM</div>
     <div class="audio-options">
@@ -838,7 +838,15 @@ function gameOver() {
       date: firebase.firestore.FieldValue.serverTimestamp()
     })
     .then(() => { console.log("Pontuação salva!"); })
-    .catch((error) => { console.error("Erro ao salvar: ", error); });
+    .catch((error) => { 
+        // Log técnico no console para debug
+        console.error("Database Write Error:", error); 
+        
+        alert("Error: Score submission failed.");
+        
+        // Volta ao menu para tentar novamente
+        goToMenu();
+    });
   }
 }
 
