@@ -1,5 +1,19 @@
 <!doctype html>
 <html lang="en">
+<!--
+Dielectric Runner - An Electrostatics Game
+Copyright (C) 2025 Eric B. Lindgren
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed WITHOUT ANY WARRANTY; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the LICENSE file (GPLv3) for details.
+-->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -242,7 +256,7 @@
     <h1>DIELECTRIC RUNNER</h1>
     <p class="subtitle">An Electrostatics Game</p>
     
-    <button id="btnInfo" class="btn-info-corner">INSTRUCTIONS</button>
+    <button id="btnInfo" class="btn-info-corner">ABOUT</button>
     <input type="text" id="pName" class="name-input" placeholder="INSERT NAME" maxlength="12">
     
     <div class="audio-select-label">SOUND SYSTEM</div>
@@ -283,7 +297,7 @@
   
   <div id="overlayInfo" class="overlay hidden" style="z-index: 100;">
       <div class="info-content">
-          <h2>MISSION BRIEFING</h2>
+          <h2>MISSION BRIEFING / ABOUT</h2>
           
           <h3>How to Play</h3>
           <ul>
@@ -308,6 +322,32 @@
               Lindgren, E. B. (2025). Charge-Induced Polarization in Dielectric Particle Systems: A Geometry-Dependent Effect. <em>Journal of Chemical Theory and Computation</em>, 21, 6135–6150.
           </div>
           
+          <h3>License</h3>
+			<p>
+				Copyright (C) 2025 Eric B. Lindgren.
+				This game is licensed under the GNU General Public License v3.0 or later.
+				It comes with ABSOLUTELY NO WARRANTY.
+			</p>
+			<p>
+				<a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="license noopener noreferrer">GNU General Public License v3 (full text)</a>
+			</p>
+			
+			<h3>Source Code</h3>
+			<p>
+			The complete corresponding source code for this game is available at:<br>
+			<a href="https://github.com/ericblindgren/dielectric-runner"
+				target="_blank"
+				rel="noopener noreferrer">
+				https://github.com/ericblindgren/dielectric-runner
+			</a>
+			</p>
+			
+			<h3>Third-Party Components</h3>
+			<p>
+				This game uses external libraries and fonts provided under their own licenses.
+				These components are not covered by the GNU General Public License applied to this game.
+			</p>
+
           <button id="btnCloseInfo" class="close-btn">CLOSE</button>
       </div>
   </div>
