@@ -26,6 +26,7 @@ See the LICENSE file (GPLv3) for details.
 
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
 
   <style>
     /* --- AESTHETICS --- */
@@ -409,6 +410,7 @@ const firebaseConfig = {
 let db = null;
 try {
   firebase.initializeApp(firebaseConfig);
+  analytics = firebase.analytics();
   db = firebase.firestore();
   console.log("Conectado ao Firebase Global!");
 } catch (e) {
