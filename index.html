@@ -306,7 +306,7 @@ See the LICENSE file (GPLv3) for details.
         <a href="https://github.com/ericblindgren/dielectric-runner" target="_blank" style="color: inherit; text-decoration: underline; cursor: pointer;">
           https://github.com/ericblindgren/dielectric-runner
         </a> <br>
-        v. 1.1 
+        v. 1.2 
     </div>
   </div>
 
@@ -700,6 +700,50 @@ window.addEventListener('keydown', e => {
 window.addEventListener('keyup', e => {
   if(e.code === 'ArrowUp' || e.code === 'KeyW') Input.up = false;
   if(e.code === 'ArrowDown' || e.code === 'KeyS') Input.down = false;
+});
+
+// ==========================================
+// TOUCH CONTROLS IMPLEMENTATION
+// ==========================================
+let touchStartY = 0;
+const TOUCH_THRESHOLD = 10; // Sensitivity (pixels)
+
+window.addEventListener('touchstart', e => {
+  if (e.target.tagName === 'CANVAS') e.preventDefault();
+
+  // Handle Game Start / Restart on Tap
+  if ((!State.active || State.over) && overlayInfo.classList.contains('hidden')) {
+      Input.up = false;
+      Input.down = false;
+      if (e.target.tagName === 'CANVAS') handleSpace(); 
+      return;
+  }
+
+  // Set Reference Point
+  if (e.touches.length > 0) {
+    touchStartY = e.touches[0].clientY;
+    Input.up = false;
+    Input.down = false;
+  }
+}, { passive: false });
+
+window.addEventListener('touchmove', e => {
+  if (e.target.tagName === 'CANVAS' || State.active) e.preventDefault();
+  if (!State.active || e.touches.length === 0) return;
+
+  const currentY = e.touches[0].clientY;
+  const delta = currentY - touchStartY;
+
+  Input.up = false;
+  Input.down = false;
+
+  if (delta < -TOUCH_THRESHOLD) Input.up = true; // Sliding Up
+  else if (delta > TOUCH_THRESHOLD) Input.down = true; // Sliding Down
+}, { passive: false });
+
+window.addEventListener('touchend', e => {
+  Input.up = false;
+  Input.down = false;
 });
 
 const uiScore = document.getElementById('uiScore');
